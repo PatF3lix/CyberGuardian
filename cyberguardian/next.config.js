@@ -1,14 +1,13 @@
 // next.config.js
 
 module.exports = {
-  webpack: (config, { isServer, dev }) => {
-    // Disable HMR for production builds
-    if (!dev && !isServer) {
+  webpack: (config, { dev }) => {
+    // Disable HMR in production
+    if (!dev) {
       config.plugins = config.plugins.filter(
         (plugin) => plugin.constructor.name !== "HotModuleReplacementPlugin"
       );
     }
-
     return config;
   },
 };
