@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 4000",
     "lint": "next lint"
   },
   "dependencies": {
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "next": "^14.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",
@@ -24,7 +25,6 @@
     "@typescript-eslint/parser": "^7.8.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
-    "next": "^14.2.3",
     "typescript": "5.4.5"
   }
 }

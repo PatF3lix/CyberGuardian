@@ -8,8 +8,10 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./cyberguardian:/app
+      - cyberguardian_node_modules:/app/node_modules
+      - cyberguardian_next:/app/.next
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
     networks:
       - nginxproxymanager_default
     restart: unless-stopped
@@ -17,3 +19,6 @@ services:
 networks:
   nginxproxymanager_default:
     external: true
+volumes:
+  cyberguardian_node_modules:
+  cyberguardian_next:
