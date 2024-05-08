@@ -9,7 +9,7 @@ services:
     volumes:
       - ./cyberguardian:/app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
     networks:
       - nginxproxymanager_default
     restart: unless-stopped
