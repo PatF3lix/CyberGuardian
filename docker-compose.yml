@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  cyberguardian:
+    container_name: cyberguardian
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    networks:
+      - nginxproxymanager_default
+    restart: unless-stopped
+
+networks:
+  nginxproxymanager_default:
+    external: true
