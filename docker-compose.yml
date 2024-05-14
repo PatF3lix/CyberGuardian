@@ -7,7 +7,7 @@ services:
       context: ./cyberguardian-server
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"
+      - "4000:4019"
     volumes:
       - ./cyberguardian-server:/app
     networks:
@@ -19,8 +19,8 @@ services:
   db:
     image: mongo:latest
     container_name: db
-    volumes:
-      - cyberguardian-server:/data/db
+    # volumes:
+    #   - cyberguardian-server:/data/db
     networks:
       - cybertools_network
     restart: unless-stopped
