@@ -7,4 +7,4 @@ const nextConfig = {
 };
 
 // Export the nextConfig object as the default export from this module.
-export default nextConfig;
+module.exports = nextConfig;

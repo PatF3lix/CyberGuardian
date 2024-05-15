@@ -1,6 +1,6 @@
 // next.config.js
 
-module.exports = {
+const nextConfig = {
   webpack: (config, { dev }) => {
     // Disable HMR in production
     if (!dev) {
@@ -10,7 +10,10 @@ module.exports = {
     }
     return config;
   },
+  reactStrictMode: true,
 };
+
+module.exports = nextConfig;
 
 /**
     dev indicates whether the current build is for development or production.

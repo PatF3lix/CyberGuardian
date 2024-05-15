@@ -1,18 +1,19 @@
 import express, { Request, Response } from "express";
 import csvParser from "csv-parser";
 import fs from "fs";
-import mongoose from "mongoose";
 import CyberTool from "./models/cybertool";
+import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 const path = require("path");
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4001;
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, World!");
+app.get("/api/cybertools", async (req: Request, res: Response) => {
+  const cybertools = await CyberTool.find();
+  res.send(cybertools);
 });
 
 // Define interface for the CSV row
@@ -62,8 +63,10 @@ mongoose
       console.log("cybertools collection exists");
     }
   })
-  .catch((err) => console.error("Could not connect to MongoDB:", err));
+  .catch((err?: Error | null) =>
+    console.error("Could not connect to MongoDB:", err)
+  );
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running!!`);
 });

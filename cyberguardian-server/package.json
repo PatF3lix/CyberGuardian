@@ -8,7 +8,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
-  "name": "cybertoolsserver",
+  "name": "cyberguardian-server",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
@@ -32,7 +32,7 @@
   "scripts": {
     "build": "tsc && npm run copy-csv",
     "copy-csv": "node src/scripts/copy-csv.js",
-    "start": "npm run build && node dist/server.js",
+    "start": "rm -rf dist && npm run build && node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

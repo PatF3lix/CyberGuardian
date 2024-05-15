@@ -1,17 +1,32 @@
 version: "3.8"
 
 services:
+  cyberguardian:
+    container_name: cyberguardian
+    build:
+      context: ./cyberguardian
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./cyberguardian:/app
+      - cyberguardian_node_modules:/app/node_modules
+      - cyberguardian_next:/app/.next
+    networks:
+      - cybertools_network
+      # - nginxproxymanager_default
+    restart: unless-stopped
+    depends_on:
+      - cyberguardian-server
+
   cyberguardian-server:
-    container_name: cyberguardian-server
+    container_name: cyberserver
     build:
       context: ./cyberguardian-server
       dockerfile: Dockerfile
-    ports:
-      - "4000:4019"
-    # volumes:
-    #   - ./cyberguardian-server:/app
     networks:
       - cybertools_network
+      # - nginxproxymanager_default
     restart: unless-stopped
     depends_on:
       - db
@@ -19,14 +34,19 @@ services:
   db:
     image: mongo:latest
     container_name: db
-    # volumes:
-    #   - cyberguardian-server:/data/db
+    volumes:
+      - cyberguardian-server:/data/db
     networks:
       - cybertools_network
     restart: unless-stopped
 
 networks:
+  # nginxproxymanager_default:
+  #   external: true
   cybertools_network:
     driver: bridge
-# volumes:
-# cyberguardian-server:
+
+volumes:
+  cyberguardian_node_modules:
+  cyberguardian_next:
+  cyberguardian-server:
