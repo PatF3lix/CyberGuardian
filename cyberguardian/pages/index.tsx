@@ -6,7 +6,6 @@ interface HomeProps {
 }
 
 function HomePage({ cybertools }: HomeProps) {
-  console.log("built");
   const {
     cybertools: tools,
     setCybertoolsData,
@@ -14,7 +13,7 @@ function HomePage({ cybertools }: HomeProps) {
   } = useCybertoolsContext();
 
   useEffect(() => {
-    if (!loadedData) {
+    if (!loadedData || tools.length !== cybertools.length) {
       setCybertoolsData(cybertools);
     }
   });
