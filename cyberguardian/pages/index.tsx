@@ -1,24 +1,19 @@
+import { Cybertools, useCybertoolsContext } from "@/store/useCybertools";
 import React from "react";
 
-interface Cybertools {
-  Category: string;
-  Name: string;
-  Description: string;
-  Url: string;
-  Logo?: string;
-  Image?: string;
-}
-
-interface Props {
+interface HomeProps {
   cybertools: Cybertools[];
 }
 
-const Home: React.FC<Props> = ({ cybertools }) => {
+function Home({ cybertools }: HomeProps) {
+  const { cybertools: tools, setCybertoolsData } = useCybertoolsContext();
+  setCybertoolsData(cybertools);
+
   return (
     <div>
       <h1>CyberGuardian Landing Page</h1>
       <ul>
-        {cybertools.map((tool) => (
+        {tools.map((tool) => (
           <li key={tool.Name}>
             <p>{tool.Name}</p>
           </li>
@@ -26,7 +21,7 @@ const Home: React.FC<Props> = ({ cybertools }) => {
       </ul>
     </div>
   );
-};
+}
 
 export async function getStaticProps() {
   try {

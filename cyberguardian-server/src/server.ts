@@ -26,6 +26,8 @@ interface CSVRow {
   Image?: string;
 }
 
+console.log(process.env.DATABASE_URI);
+
 mongoose
   .connect(process.env.DATABASE_URI || "")
   .then(async () => {
@@ -62,11 +64,11 @@ mongoose
     } else {
       console.log("cybertools collection exists");
     }
+
+    app.listen(port, () => {
+      console.log(`Server running!!`);
+    });
   })
   .catch((err?: Error | null) =>
     console.error("Could not connect to MongoDB:", err)
   );
-
-app.listen(port, () => {
-  console.log(`Server running!!`);
-});
