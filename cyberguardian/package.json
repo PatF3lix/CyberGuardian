@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "set NODE_ENV=development && next dev -p 4000",
+    "dev": "next dev -p 4000",
     "build": "next build",
     "start": "npm run build && next start -p 4000",
     "lint": "next lint"
@@ -19,12 +19,15 @@
     "@babel/preset-env": "^7.24.5",
     "@next/eslint-plugin-next": "^14.2.3",
     "@types/node": "20.12.11",
+    "@types/node-sass": "^4.11.7",
     "@types/react": "18.3.1",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
+    "node-sass": "^9.0.0",
+    "sass": "^1.77.2",
     "typescript": "5.4.5"
   }
 }

@@ -1,8 +1,13 @@
-import "@/styles/globals.css";
+import Layout from "@/components/layout/layout";
+import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
 /**app.tsx:
