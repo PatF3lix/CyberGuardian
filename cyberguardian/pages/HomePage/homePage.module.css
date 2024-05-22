@@ -1,0 +1,29 @@
+.homePageContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.homePageTitle {
+  width: fit-content;
+  margin: 2rem auto;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.toolsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 30rem));
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+  row-gap: 3rem;
+  column-gap: 0.5rem;
+}
+
+.searchBar {
+  width: 70rem;
+  height: 5rem;
+  border-radius: 5%;
+}

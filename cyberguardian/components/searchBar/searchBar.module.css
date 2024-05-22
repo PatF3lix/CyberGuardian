@@ -1,0 +1,33 @@
+.searchBar {
+  display: flex;
+  border-radius: 2rem; /* Adjust the value as needed for the desired roundness */
+  overflow: hidden; /* Ensures that child elements don't overflow outside the rounded corners */
+  margin: 0 auto;
+  position: relative;
+}
+
+.searchBar input[type="text"] {
+  width: 50rem;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 2rem; /* Same value as the parent for consistency */
+}
+
+.searchBar button {
+  padding: 1rem 2rem;
+  background-color: #007bff; /* Example background color */
+  color: white;
+  border: none;
+  border-radius: 2rem; /* Adjust as needed, here it's rounded only on the right side */
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  right: 1%;
+}
+
+/* Optional: Hover and Focus Styles */
+.searchBar input[type="text"]:focus,
+.searchBar button:hover {
+  outline: none;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3); /* Example box shadow */
+}

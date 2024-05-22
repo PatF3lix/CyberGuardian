@@ -3,13 +3,14 @@ import styles from "./cybertoolCard.module.css";
 // import Image from "next/image";
 
 type CybertoolCardProps = {
+  key: string;
   name: string;
   //   logo: string;
 };
 
-export default function CybertoolCard({ name }: CybertoolCardProps) {
+export default function CybertoolCard({ key, name }: CybertoolCardProps) {
   return (
-    <div className={styles.cardContainer}>
+    <div key={key} className={styles.cardContainer}>
       {/* <Image className={styles.logo} src={logo} alt={name} /> */}
       <Link href={`/Cybertool/${name}`}>
         <h2 className={styles.toolName}>{name}</h2>
