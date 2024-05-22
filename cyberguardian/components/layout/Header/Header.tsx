@@ -5,7 +5,9 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className={styles.navMenu}>
-      <h3 className={styles.PageTitle}>CyberGuardian</h3>
+      <Link href={"/"}>
+        <h3 className={styles.PageTitle}>CyberGuardian</h3>
+      </Link>
       <div>
         <Btn type="button">
           <Link href={"/SignIn"}>Sign In</Link>
