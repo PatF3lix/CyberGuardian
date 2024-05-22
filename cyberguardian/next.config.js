@@ -11,6 +11,15 @@ const nextConfig = {
     return config;
   },
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/home",
+        destination: "/HomePage",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

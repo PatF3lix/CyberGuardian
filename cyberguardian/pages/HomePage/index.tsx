@@ -5,7 +5,7 @@ interface HomeProps {
   cybertools: Cybertools[];
 }
 
-function HomePage({ cybertools }: HomeProps) {
+export default function HomePage({ cybertools }: HomeProps) {
   const {
     cybertools: tools,
     setCybertoolsData,
@@ -57,5 +57,3 @@ export async function getStaticProps() {
     };
   }
 }
-
-export default HomePage;
