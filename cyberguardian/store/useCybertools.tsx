@@ -11,19 +11,21 @@ export interface Cybertools {
 
 interface CybertoolsState {
   cybertools: Cybertools[];
-  loading: boolean;
+  loadedData: boolean;
   error: string | null;
 }
 
 const initialState: CybertoolsState = {
   cybertools: [],
-  loading: false,
+  loadedData: false,
   error: null,
 };
 
+type fetchStartAction = { type: "FETCH_START" };
 type SetDataAction = { type: "SET_DATA"; payload: Cybertools[] };
+type fetchFinishAction = { type: "FETCH_FINISH" };
 
-type CybertoolsAction = SetDataAction;
+type CybertoolsAction = fetchStartAction | SetDataAction | fetchFinishAction;
 
 function cybertoolsReducer(
   state: CybertoolsState,
@@ -34,6 +36,7 @@ function cybertoolsReducer(
       return {
         ...state,
         cybertools: action.payload,
+        loadedData: true,
       };
     default:
       throw new Error(`Unsupported action type`);
@@ -67,7 +70,7 @@ export function CybertoolsProvider({ children }: CybertoolsProviderProps) {
 
   const ctx: CybertoolsContextValue = {
     cybertools: state.cybertools,
-    loading: state.loading,
+    loadedData: state.loadedData,
     error: state.error,
     setCybertoolsData(cybertools: Cybertools[]) {
       dispatch({ type: "SET_DATA", payload: cybertools });

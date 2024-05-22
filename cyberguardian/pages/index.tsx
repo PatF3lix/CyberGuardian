@@ -1,23 +1,37 @@
 import { Cybertools, useCybertoolsContext } from "@/store/useCybertools";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface HomeProps {
   cybertools: Cybertools[];
 }
 
-function Home({ cybertools }: HomeProps) {
-  const { cybertools: tools, setCybertoolsData } = useCybertoolsContext();
-  setCybertoolsData(cybertools);
+function HomePage({ cybertools }: HomeProps) {
+  console.log("built");
+  const {
+    cybertools: tools,
+    setCybertoolsData,
+    loadedData,
+  } = useCybertoolsContext();
+
+  useEffect(() => {
+    if (!loadedData) {
+      setCybertoolsData(cybertools);
+    }
+  });
 
   return (
     <div>
       <h1>CyberGuardian Landing Page</h1>
       <ul>
-        {tools.map((tool) => (
-          <li key={tool.Name}>
-            <p>{tool.Name}</p>
-          </li>
-        ))}
+        {loadedData ? (
+          tools.map((tool) => (
+            <li key={tool.Name}>
+              <p>{tool.Name}</p>
+            </li>
+          ))
+        ) : (
+          <p>Is Loading...</p>
+        )}
       </ul>
     </div>
   );
@@ -45,4 +59,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Home;
+export default HomePage;
