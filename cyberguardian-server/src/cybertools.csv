@@ -1,4 +1,4 @@
-Category,Name,Description,Url,Logo,Image
+category,name,description,url,logo,image
 Endpoint Protection,Symantec Endpoint Protection,Symantec Endpoint Protection is a comprehensive endpoint security solution that combines antivirus, firewall, intrusion prevention, and advanced threat protection features.,https://www.broadcom.com/products/cyber-security/endpoint/symantec-endpoint-protection,[Symantec Endpoint Protection Logo],[Symantec Endpoint Protection Image]
 Endpoint Protection,McAfee Endpoint Security,McAfee Endpoint Security provides advanced threat defense and endpoint protection for modern devices and environments.,https://www.mcafee.com/enterprise/en-us/products/endpoint-security.html,[McAfee Endpoint Security Logo],[McAfee Endpoint Security Image]
 Endpoint Protection,CrowdStrike Falcon,CrowdStrike Falcon offers cloud-delivered endpoint protection powered by AI and machine learning to detect and prevent cyber threats.,https://www.crowdstrike.com/products/falcon-endpoint-protection/,[CrowdStrike Falcon Logo],[CrowdStrike Falcon Image]

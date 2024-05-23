@@ -1,20 +1,22 @@
 import Link from "next/link";
 import styles from "./cybertoolCard.module.css";
-// import Image from "next/image";
+import { Cybertools } from "@/store/useCybertools";
 
 type CybertoolCardProps = {
-  key: string;
-  name: string;
-  //   logo: string;
+  tool: Cybertools;
 };
 
-export default function CybertoolCard({ key, name }: CybertoolCardProps) {
+export default function CybertoolCard({ tool }: CybertoolCardProps) {
+  const { name, description, category, logo } = tool;
   return (
-    <div key={key} className={styles.cardContainer}>
-      {/* <Image className={styles.logo} src={logo} alt={name} /> */}
+    <div className={styles.cardContainer}>
       <Link href={`/Cybertool/${name}`}>
-        <h2 className={styles.toolName}>{name}</h2>
+        <h1 className={styles.toolName}>{name}</h1>
       </Link>
+      <h2>Category:{category}</h2>
+      <p>Description: {description}</p>
+      {/* <Link href={url}>Visit: {url}</Link> */}
+      <p>logo: {logo}</p>
     </div>
   );
 }

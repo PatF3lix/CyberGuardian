@@ -1,12 +1,12 @@
 import React, { createContext, ReactNode, useContext, useReducer } from "react";
 
 export interface Cybertools {
-  Category: string;
-  Name: string;
-  Description: string;
-  Url: string;
-  Logo?: string;
-  Image?: string;
+  category: string;
+  name: string;
+  description: string;
+  url: string;
+  logo?: string;
+  image?: string;
 }
 
 interface CybertoolsState {

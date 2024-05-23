@@ -18,12 +18,12 @@ app.get("/api/cybertools", async (req: Request, res: Response) => {
 
 // Define interface for the CSV row
 interface CSVRow {
-  Category: string;
-  Name: string;
-  Description: string;
-  Url: string;
-  Logo?: string;
-  Image?: string;
+  category: string;
+  name: string;
+  description: string;
+  url: string;
+  logo?: string;
+  image?: string;
 }
 
 console.log(process.env.DATABASE_URI);
@@ -52,7 +52,7 @@ mongoose
             await cyberTool.save();
             console.log(
               "Document inserted into cybertools collection",
-              row.Name
+              row.name
             );
           } catch (err) {
             console.log("Error inserting document:", err);

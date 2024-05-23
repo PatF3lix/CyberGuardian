@@ -32,7 +32,7 @@ export default function CybertoolsCards({ cybertools }: CybertoolsProps) {
         {loadedData ? (
           <>
             {tools.slice(0, displayedTools).map((tool) => (
-              <CybertoolCard key={tool.Name} name={tool.Name} />
+              <CybertoolCard key={tool.name} tool={tool} />
             ))}
           </>
         ) : (

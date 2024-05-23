@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const cyberToolSchema = new mongoose.Schema({
-  Category: { type: String, required: true },
-  Name: { type: String, required: true },
-  Description: { type: String, required: true },
-  Url: { type: String, required: true },
-  Logo: { type: String },
-  Image: { type: String },
+  category: { type: String, required: true },
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  url: { type: String, required: true },
+  logo: { type: String },
+  image: { type: String },
 });
 
 const CyberTool = mongoose.model("CyberTool", cyberToolSchema);
