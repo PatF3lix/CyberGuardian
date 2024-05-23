@@ -1,0 +1,14 @@
+.toolsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 30rem));
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+  row-gap: 3rem;
+  column-gap: 0.5rem;
+}
+
+.toolsPageBtn {
+  display: inline-block;
+  margin: 0 auto;
+}

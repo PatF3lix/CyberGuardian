@@ -1,4 +1,4 @@
 .container {
-  background-color: darkslategrey;
+  background-color: var(--tertiary-color);
   height: 20rem;
 }

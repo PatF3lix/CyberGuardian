@@ -1,39 +1,20 @@
-import { Cybertools, useCybertoolsContext } from "@/store/useCybertools";
-import React, { useEffect } from "react";
+import { Cybertools } from "@/store/useCybertools";
+import React from "react";
 import styles from "./homePage.module.css";
-import CybertoolCard from "@/components/cybertoolCard/CybertoolCard";
 import SearchBar from "@/components/searchBar/SearchBar";
+import HomePageIntro from "@/components/homePageIntro/HomePageIntro";
+import CybertoolsCards from "@/components/cybertoolsCards/CybertoolsCards";
 
 interface HomeProps {
   cybertools: Cybertools[];
 }
 
 export default function HomePage({ cybertools }: HomeProps) {
-  const {
-    cybertools: tools,
-    setCybertoolsData,
-    loadedData,
-  } = useCybertoolsContext();
-
-  useEffect(() => {
-    if (!loadedData || tools.length !== cybertools.length) {
-      setCybertoolsData(cybertools);
-    }
-  }, [cybertools, loadedData]);
-
   return (
     <div className={styles.homePageContainer}>
-      <h1 className={styles.homePageTitle}>CyberGuardian Landing Page</h1>
+      <HomePageIntro />
       <SearchBar />
-      <div className={styles.toolsContainer}>
-        {!loadedData ? (
-          tools.map((tool) => (
-            <CybertoolCard key={tool.Name} name={tool.Name} />
-          ))
-        ) : (
-          <p>Is Loading...</p>
-        )}
-      </div>
+      <CybertoolsCards cybertools={cybertools} />
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.homePageTitle {
+  width: fit-content;
+  margin: 2rem auto;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.homePageIntro {
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}

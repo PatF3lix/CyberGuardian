@@ -4,6 +4,7 @@
   overflow: hidden; /* Ensures that child elements don't overflow outside the rounded corners */
   margin: 0 auto;
   position: relative;
+  margin-bottom: 8rem;
 }
 
 .searchBar input[type="text"] {
