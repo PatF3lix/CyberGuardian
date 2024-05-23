@@ -8,10 +8,10 @@ type CybertoolsProps = {
 };
 
 export default function CybertoolsCards({ cybertools }: CybertoolsProps) {
-  const [displayedTools, setDisplayedTools] = useState(20);
+  const [displayedTools, setDisplayedTools] = useState(15);
 
   const loadMoreTools = () => {
-    setDisplayedTools((prevTools) => prevTools + 20);
+    setDisplayedTools((prevTools) => prevTools + 15);
   };
 
   const {

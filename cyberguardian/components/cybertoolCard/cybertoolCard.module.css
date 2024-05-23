@@ -1,5 +1,60 @@
 .cardContainer {
   background-color: white;
   width: 28rem;
-  height: 35rem;
+  height: 30rem;
+  border-radius: 5%;
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.logoName {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.logo {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 5%;
+}
+
+.toolName {
+}
+
+.category {
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.visitBtn {
+  align-self: flex-start;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.externalLink {
+  width: 1rem;
+  height: 1rem;
+}
+
+.visit {
+  margin-right: 1rem;
 }
