@@ -15,12 +15,7 @@
 }
 
 .searchBar button {
-  padding: 1rem 2rem;
-  background-color: #007bff; /* Example background color */
-  color: white;
   border: none;
-  border-radius: 2rem; /* Adjust as needed, here it's rounded only on the right side */
-  cursor: pointer;
   position: absolute;
   top: 10%;
   right: 1%;

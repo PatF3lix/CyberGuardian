@@ -6,3 +6,22 @@
   padding: 0 2rem;
   height: 5rem;
 }
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+}
+
+.navLinksContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+}

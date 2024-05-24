@@ -8,6 +8,7 @@ type BtnProps = {
   style?: string;
   primary?: boolean;
   secondary?: boolean;
+  disabled?: boolean;
 };
 
 export default function Btn({
@@ -17,14 +18,16 @@ export default function Btn({
   style,
   primary,
   secondary,
+  disabled,
 }: BtnProps) {
   return (
     <button
-      className={`btn ${primary && "btn-primary"} ${
-        secondary && "btn-secondary"
-      } ${styles.style} ${style}`}
+      className={`${primary && styles.btnPrimary} ${
+        secondary && styles.btnSecondary
+      }  ${style && styles[style]}`}
       type={type}
       onClick={action}
+      disabled={disabled}
     >
       {children}
     </button>

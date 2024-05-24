@@ -5,15 +5,19 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className={styles.navMenu}>
-      <Link href={"/home"}>
-        <h3 className={styles.PageTitle}>CyberGuardian</h3>
+      <Link className={styles.pageTitle} href={"/home"}>
+        <h3>CyberGuardian</h3>
       </Link>
-      <div>
-        <Btn type="button">
-          <Link href={"/SignIn"}>Sign In</Link>
+      <div className={styles.navLinksContainer}>
+        <Btn type="button" primary={true}>
+          <Link className={styles.navLink} href={"/SignIn"}>
+            Sign In
+          </Link>
         </Btn>
-        <Btn type="button">
-          <Link href={"/SignUp"}>Sign Up</Link>
+        <Btn type="button" primary={true}>
+          <Link className={styles.navLink} href={"/SignUp"}>
+            Sign Up
+          </Link>
         </Btn>
       </div>
     </header>
