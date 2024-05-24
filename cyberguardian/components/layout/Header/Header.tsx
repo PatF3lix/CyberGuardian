@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className={styles.navMenu}>
-      <Link href={"/"}>
+      <Link href={"/home"}>
         <h3 className={styles.PageTitle}>CyberGuardian</h3>
       </Link>
       <div>

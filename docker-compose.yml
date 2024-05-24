@@ -6,8 +6,8 @@ services:
     build:
       context: ./cyberguardian
       dockerfile: Dockerfile
-    ports:
-      - "4000:4000"
+    # ports:
+    #   - "4000:4000"
     volumes:
       - ./cyberguardian:/app
       - cyberguardian_node_modules:/app/node_modules

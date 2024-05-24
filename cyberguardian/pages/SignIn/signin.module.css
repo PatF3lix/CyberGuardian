@@ -1,0 +1,45 @@
+.containerForm {
+  height: 72.8vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  background-color: #fff;
+  min-width: fit-content;
+  width: 30rem;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.1);
+}
+
+.formIntro {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.formField {
+  height: 3.5rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.forgotPassword {
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signUpLink {
+  width: fit-content;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
