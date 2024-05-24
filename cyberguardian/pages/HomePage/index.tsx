@@ -1,9 +1,9 @@
-import { Cybertools } from "@/store/useCybertools";
+import { Cybertools } from "../../store/useCybertools";
 import React from "react";
 import styles from "./homePage.module.css";
-import SearchBar from "@/components/searchBar/SearchBar";
-import HomePageIntro from "@/components/homePageIntro/HomePageIntro";
-import CybertoolsCards from "@/components/cybertoolsCards/CybertoolsCards";
+import SearchBar from "../../components/searchBar/SearchBar";
+import HomePageIntro from "../../components/homePageIntro/HomePageIntro";
+import CybertoolsCards from "../../components/cybertoolsCards/CybertoolsCards";
 
 interface HomeProps {
   cybertools: Cybertools[];

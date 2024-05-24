@@ -12,3 +12,8 @@
   width: 100%;
   font-size: 1.6rem;
 }
+
+.loadMoreBtn {
+  align-self: center;
+  width: fit-content;
+}

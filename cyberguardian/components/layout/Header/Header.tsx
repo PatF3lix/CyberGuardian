@@ -1,4 +1,4 @@
-import Btn from "@/components/reusable/Btn/btn";
+import Btn from "../../reusable/Btn/btn";
 import styles from "./Header.module.css";
 import Link from "next/link";
 

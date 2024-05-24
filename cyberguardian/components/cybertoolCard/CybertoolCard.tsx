@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./cybertoolCard.module.css";
-import { Cybertools } from "@/store/useCybertools";
+import { Cybertools } from "../../store/useCybertools";
 import Image from "next/image";
 
 type CybertoolCardProps = {

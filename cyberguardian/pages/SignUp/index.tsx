@@ -1,3 +1,21 @@
+import { FormikHelpers } from "formik";
+import SignForm from "../../components/signForm/SignForm";
+// import styles from "./signUp.module.css";
+
+type FormValues = {
+  email: string;
+  password: string;
+  username?: string;
+};
+
 export default function SignUp() {
-  return <h1>Sign Up</h1>;
+  async function handleSubmit(
+    values: FormValues,
+    { resetForm }: FormikHelpers<FormValues>
+  ) {
+    console.log(values);
+    resetForm();
+  }
+
+  return <SignForm type="SignUp" handleSubmit={handleSubmit} />;
 }

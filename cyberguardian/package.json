@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
-    "start": "npm run build && next start -p 4000",
+    "start": "npm i && npm run build && next start -p 4000",
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/yup": "^0.32.0",
     "formik": "^2.4.6",
     "next": "^14.2.3",
     "react": "^18.3.1",
