@@ -4,6 +4,7 @@ import styles from "./homePage.module.css";
 import SearchBar from "../../components/searchBar/SearchBar";
 import HomePageIntro from "../../components/homePageIntro/HomePageIntro";
 import CybertoolsCards from "../../components/cybertoolsCards/CybertoolsCards";
+import FilterOptions from "@/components/filterOptions/FilterOptions";
 
 interface HomeProps {
   cybertools: Cybertools[];
@@ -14,6 +15,7 @@ export default function HomePage({ cybertools }: HomeProps) {
     <div className={styles.homePageContainer}>
       <HomePageIntro />
       <SearchBar />
+      <FilterOptions />
       <CybertoolsCards cybertools={cybertools} />
     </div>
   );

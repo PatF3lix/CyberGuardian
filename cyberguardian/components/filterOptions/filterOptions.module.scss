@@ -1,0 +1,20 @@
+.filters {
+  &Container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &Features {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &BtnText {
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
+}
