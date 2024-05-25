@@ -1,29 +1,31 @@
-import { useCybertoolsContext, type Cybertools } from "@/store/useCybertools";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { type Cybertools } from "@/store/useCybertools";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./cybertoolPage.module.scss";
 
-export default function Cybertool() {
-  const { cybertools } = useCybertoolsContext();
+interface CybertoolPageProps {
+  cybertool: Cybertools | null;
+}
+
+export default function Cybertool({ cybertool }: CybertoolPageProps) {
   const router = useRouter();
-  //extract tool name from url
-  const { id } = router.query;
 
-  //find tool
-  const cybertool: Cybertools | undefined = cybertools.find(
-    (tool) => tool.name === id
-  );
-
-  //verify if tool exists
-  // could handle a state here, to throw an error if that object no longer exists
-  if (cybertool === undefined) {
-    console.log("no tool with that name was found.");
-  } else {
-    console.log(cybertool);
+  if (router.isFallback) {
+    return <div>Loading...</div>;
   }
 
-  const { category, description, name } = cybertool!;
+  if (!cybertool) {
+    return (
+      <div className={styles.cybertoolPageContainer}>
+        <h2>No tool found</h2>
+        <p>We could not find the tool you were looking for.</p>
+      </div>
+    );
+  }
+
+  const { category, description, name } = cybertool;
 
   return (
     <div className={styles.cybertoolPageContainer}>
@@ -31,7 +33,7 @@ export default function Cybertool() {
         <Image
           className={styles.logo}
           src="/images/mocklogo.jpg"
-          alt="${name-logo}"
+          alt={`${name}-logo`}
           width={200}
           height={100}
         />
@@ -44,3 +46,31 @@ export default function Cybertool() {
     </div>
   );
 }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch("http://cyberserver:4001/api/cybertools");
+  if (!res.ok) {
+    throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
+  }
+  const data: Cybertools[] = await res.json();
+
+  const paths = data.map((tool: Cybertools) => ({
+    params: { id: tool.name },
+  }));
+
+  return { paths, fallback: true };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { id } = context.params!;
+  const res = await fetch("http://cyberserver:4001/api/cybertools");
+  if (!res.ok) {
+    throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
+  }
+  const data: Cybertools[] = await res.json();
+  const cybertool = data.find((tool: Cybertools) => tool.name === id) || null;
+
+  return {
+    props: { cybertool },
+  };
+};
