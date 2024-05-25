@@ -1,4 +1,5 @@
 .container {
   background-color: var(--tertiary-color);
   height: 10rem;
+  width: 100%;
 }
