@@ -1,0 +1,18 @@
+.starRating {
+  display: flex;
+  gap: 5px;
+  margin-right: 0.8rem;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 2rem;
+
+  &Empty {
+    color: #e0e0e0;
+  }
+
+  &Filled {
+    color: #007bff;
+  }
+}

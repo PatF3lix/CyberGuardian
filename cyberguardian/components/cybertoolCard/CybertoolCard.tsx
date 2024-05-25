@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./cybertoolCard.module.css";
 import { Cybertools } from "../../store/useCybertools";
 import Image from "next/image";
+import { useState } from "react";
+import StarRating from "../starRating/StarRating";
 
 type CybertoolCardProps = {
   tool: Cybertools;
@@ -9,6 +11,12 @@ type CybertoolCardProps = {
 
 export default function CybertoolCard({ tool }: CybertoolCardProps) {
   const { name, description, category } = tool;
+  const [rating, setRating] = useState<number>(0);
+
+  function handleRatingChange(rating: number) {
+    setRating(rating);
+  }
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.logoName}>
@@ -22,6 +30,10 @@ export default function CybertoolCard({ tool }: CybertoolCardProps) {
         <Link href={`/Cybertool/${name}`}>
           <h2 className={styles.toolName}>{name}</h2>
         </Link>
+      </div>
+      <div className={styles.ratingContainer}>
+        <StarRating rating={rating} onRatingChange={handleRatingChange} />
+        <p className={styles.currentRating}>({rating})</p>
       </div>
       <h2 className={styles.category}>Category: {category}</h2>
       <p className={styles.description}>{description}</p>

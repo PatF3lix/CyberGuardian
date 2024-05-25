@@ -13,7 +13,7 @@
 .logoName {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   gap: 1rem;
 }
 
@@ -24,6 +24,16 @@
 }
 
 .toolName {
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.currentRating {
+  font-size: 1.3rem;
 }
 
 .category {
