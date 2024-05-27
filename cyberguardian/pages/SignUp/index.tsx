@@ -17,9 +17,13 @@ export default function SignUp() {
     { resetForm }: FormikHelpers<FormValuesSignUp>
   ) {
     try {
-      setCookie(values, process.env.SIGN_UP_URL);
-      router.push("/HomePage");
-      resetForm();
+      const res = await setCookie(values, process.env.SIGN_IN_URL!);
+      if (res.ok) {
+        router.push("/HomePage");
+        resetForm();
+      } else {
+        throw new Error(`Failed to fetch data: ${res.statusText}`);
+      }
     } catch (error) {
       console.error("An error occurred:", error);
     }
