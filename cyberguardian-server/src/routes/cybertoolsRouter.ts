@@ -4,6 +4,7 @@ import CyberTool from "../models/cybertool";
 const router = express.Router();
 router.get("/", async function (req: Request, res: Response) {
   try {
+    // fetch all existing tools from database
     const cybertools = await CyberTool.find();
     res.send(cybertools);
   } catch (err) {

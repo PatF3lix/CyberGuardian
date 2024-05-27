@@ -1,20 +1,18 @@
 import mongoose from "mongoose";
 import { Password } from "../services/Password";
 
-// defines the shape of the attributes required to create a new User
-type UserAttrs = {
+// Defines the shape of the attributes required to create a new User
+interface UserAttrs {
   username: string;
   email: string;
   password: string;
-  //   cybertools: [];
-};
+}
 
-// This is what a User document will look like in the database.
+// This is what a User document will look like in the database
 interface UserDoc extends mongoose.Document {
   username: string;
   email: string;
   password: string;
-  // cybertools: [];
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
@@ -25,15 +23,22 @@ const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: [true, "Username is required"],
+      unique: true,
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "Email is required"],
+      unique: true,
+      //^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$ is a regular expression (regex) pattern used to validate email addresses.
+      match: [
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+        "Please provide a valid email address",
+      ],
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "Password is required"],
     },
   },
   {
@@ -45,11 +50,11 @@ const userSchema = new mongoose.Schema(
         delete ret.__v;
       },
     },
+    timestamps: true, // Automatically adds createdAt and updatedAt fields
   }
 );
 
-//This is a pre-save middleware function that hashes the password before saving the document,
-//if the password field has been modified.
+// Pre-save middleware to hash the password before saving the document
 userSchema.pre("save", async function (done) {
   if (this.isModified("password")) {
     const hashed = await Password.toHash(this.get("password"));
@@ -58,8 +63,7 @@ userSchema.pre("save", async function (done) {
   done();
 });
 
-//It provides type safety and ensures that only the attributes defined
-// in UserAttrs are used to create a new User.
+// Static method to provide type safety and ensure only valid attributes are used to create a new User
 userSchema.statics.build = function (attrs: UserAttrs) {
   return new User(attrs);
 };
