@@ -25,7 +25,7 @@ export default function CybertoolsCards({ cybertools }: CybertoolsProps) {
     if (!loadedData || tools.length !== cybertools.length) {
       setCybertoolsData(cybertools);
     }
-  }, [cybertools, loadedData]);
+  }, [loadedData, setCybertoolsData, cybertools, tools.length]);
 
   return (
     <>
