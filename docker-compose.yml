@@ -16,7 +16,6 @@ services:
       # - nginxproxymanager_default
     restart: unless-stopped
     depends_on:
-      - db
       - cyberguardian-server
 
   cyberguardian-server:

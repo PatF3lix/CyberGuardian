@@ -7,6 +7,7 @@ import { cybertoolsRouter } from "./routes/cybertoolsRouter";
 import { errorHandler } from "./middlewares/errorHandling";
 import "express-async-errors"; // This package helps handle async errors
 import helmet from "helmet";
+import { populateCyberTools } from "./services/populateCybertools";
 // import cors from "cors";
 
 dotenv.config();
@@ -36,14 +37,20 @@ app.use("/api/cybertools", cybertoolsRouter);
 
 app.use(errorHandler);
 
-mongoose
-  .connect(process.env.DATABASE_URI || "")
-  .then(() => {
-    console.log("Connected to MongoDB");
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Could not connect to MongoDB:", err);
-  });
+  const start = async () => {
+    try {
+      await mongoose.connect(process.env.DATABASE_URI || "");
+      console.log('Connected to MongoDB');
+  
+      // Populate cyber tools if the collection does not exist
+    await populateCyberTools();
+  
+      app.listen(port, () => {
+        console.log('Server running on port 4001');
+      });
+    } catch (err) {
+      console.error('Failed to connect to MongoDB', err);
+    }
+  };
+
+  start();

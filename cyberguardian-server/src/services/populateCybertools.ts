@@ -15,31 +15,50 @@ interface CSVRow {
 }
 
 export const populateCyberTools = async () => {
-  // Check if cybertools collection exists
-  const collectionInfo = await mongoose.connection.db
-    .listCollections({
-      name: "cybertools",
-    })
-    .next();
+  try {
+    // Check if cybertools collection exists
+    const collectionInfo = await mongoose.connection.db
+      .listCollections({
+        name: "cybertools",
+      })
+      .next();
 
-  if (!collectionInfo) {
-    console.log("Cybertools collection does not exist");
+    if (!collectionInfo) {
+      console.log("Cybertools collection does not exist");
 
-    fs.createReadStream(path.join(__dirname, "cybertools.csv"))
-      .pipe(csvParser())
-      .on("data", async (row: CSVRow) => {
+      const filePath = "/app/dist/cybertools.csv";
+      const rows: CSVRow[] = [];
+
+      // Read the CSV file and parse its content
+      await new Promise<void>((resolve, reject) => {
+        fs.createReadStream(filePath)
+          .pipe(csvParser())
+          .on("data", (row: CSVRow) => {
+            rows.push(row);
+          })
+          .on("end", () => {
+            resolve();
+          })
+          .on("error", (err) => {
+            reject(err);
+          });
+      });
+
+      // Insert the parsed rows into the database
+      for (const row of rows) {
         try {
           const cyberTool = new CyberTool(row);
           await cyberTool.save();
           console.log("Document inserted into cybertools collection", row.name);
         } catch (err) {
-          console.log("Error inserting document:", err);
+          console.error("Error inserting document:", err);
         }
-      })
-      .on("end", () => {
-        console.log("CSV parsing finished");
-      });
-  } else {
-    console.log("Cybertools collection exists");
+      }
+      console.log("CSV parsing and database insertion finished");
+    } else {
+      console.log("Cybertools collection exists");
+    }
+  } catch (err) {
+    console.error("Error populating cyber tools:", err);
   }
 };
